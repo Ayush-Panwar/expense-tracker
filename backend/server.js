@@ -2,6 +2,15 @@ const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
 
+// log env status on startup
+console.log('ENV CHECK:', {
+  hasDbUrl: !!process.env.DATABASE_URL,
+  hasJwtSecret: !!process.env.JWT_SECRET,
+  hasSupabaseUrl: !!process.env.SUPABASE_URL,
+  hasSupabaseKey: !!process.env.SUPABASE_SERVICE_KEY,
+  port: process.env.PORT,
+});
+
 const authRoutes = require('./src/routes/authRoutes');
 const expenseRoutes = require('./src/routes/expenseRoutes');
 

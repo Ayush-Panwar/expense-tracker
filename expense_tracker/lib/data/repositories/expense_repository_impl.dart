@@ -1,6 +1,7 @@
 import 'dart:io';
 import '../../domain/entities/expense.dart';
 import '../../domain/entities/summary.dart';
+import '../../domain/entities/sync_result.dart';
 import '../../domain/repositories/expense_repository.dart';
 import '../datasources/local_datasource.dart';
 import '../datasources/remote_datasource.dart';
@@ -145,9 +146,10 @@ class ExpenseRepositoryImpl implements ExpenseRepository {
   }
 
   @override
-  Future<bool> pullRemoteChanges() async {
+  Future<SyncResult> pullRemoteChanges() async {
     try {
-      bool hadChanges = false;
+      final allUpserted = <ExpenseEntity>[];
+      final allDeleted = <String>[];
       bool hasMore = true;
       String? cursor = await localDatasource.getLastSyncedAt();
 
@@ -164,25 +166,25 @@ class ExpenseRepositoryImpl implements ExpenseRepository {
           break;
         }
 
-        hadChanges = true;
-
-        // upsert instead of insertIfNotExists — handles updates
         for (final json in upserted) {
           final model = ExpenseModel.fromJson(json);
           await localDatasource.upsertExpense(model);
+          allUpserted.add(model);
         }
 
         for (final id in deleted) {
-          await localDatasource.deleteExpense(id as String);
+          final strId = id as String;
+          await localDatasource.deleteExpense(strId);
+          allDeleted.add(strId);
         }
 
         cursor = serverTime;
         await localDatasource.setLastSyncedAt(serverTime);
       }
 
-      return hadChanges;
+      return SyncResult(upserted: allUpserted, deleted: allDeleted);
     } catch (_) {
-      return false;
+      return const SyncResult();
     }
   }
 }

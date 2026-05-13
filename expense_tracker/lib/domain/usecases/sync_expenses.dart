@@ -1,3 +1,4 @@
+import '../entities/sync_result.dart';
 import '../repositories/expense_repository.dart';
 
 class SyncExpenses {
@@ -5,7 +6,7 @@ class SyncExpenses {
 
   SyncExpenses(this.repository);
 
-  Future<bool> call() async {
+  Future<SyncResult> call() async {
     await repository.pushLocalChanges();
     return await repository.pullRemoteChanges();
   }
