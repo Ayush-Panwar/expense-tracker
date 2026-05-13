@@ -9,4 +9,8 @@ class GetExpenses {
   Future<List<ExpenseEntity>> call({int limit = 20, int offset = 0}) {
     return repository.getLocalExpensesPaginated(limit, offset);
   }
+
+  Future<int> count() {
+    return repository.getLocalExpenseCount();
+  }
 }

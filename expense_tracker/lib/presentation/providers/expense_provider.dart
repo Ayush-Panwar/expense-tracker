@@ -1,11 +1,11 @@
 import 'dart:io';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:uuid/uuid.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as p;
 import '../../domain/entities/expense.dart';
 import '../../domain/entities/summary.dart';
-import '../../domain/entities/sync_result.dart';
 import '../../domain/usecases/get_expenses.dart';
 import '../../domain/usecases/add_expense.dart';
 import '../../domain/usecases/delete_expense.dart';
@@ -13,6 +13,10 @@ import '../../domain/usecases/sync_expenses.dart';
 import '../../domain/usecases/search_expenses.dart';
 import '../../domain/usecases/get_summary.dart';
 import '../../core/di.dart';
+
+void _log(String tag, String msg) {
+  debugPrint('[EP][$tag] $msg');
+}
 
 class ExpenseState {
   final List<ExpenseEntity> expenses;
@@ -27,12 +31,12 @@ class ExpenseState {
   bool get hasActiveFilter =>
       activeCategory != null || (activeQuery != null && activeQuery!.isNotEmpty);
 
-  ExpenseState({
+  const ExpenseState({
     this.expenses = const [],
     this.summary = const SummaryEntity(),
-    this.isLoading = false,
+    this.isLoading = true,
     this.isLoadingMore = false,
-    this.hasMore = true,
+    this.hasMore = false,
     this.activeCategory,
     this.activeQuery,
     this.error,
@@ -75,11 +79,13 @@ class ExpenseNotifier extends Notifier<ExpenseState> {
   bool _isSyncing = false;
   bool _isLoadingMore = false;
   int _filterVersion = 0;
+  int _loadedCount = 0; // tracks how many items user has scrolled to
 
   static const _pageSize = 20;
 
   @override
   ExpenseState build() {
+    _log('BUILD', 'initializing');
     final di = DI();
     _getExpenses = di.getExpenses;
     _addExpense = di.addExpense;
@@ -87,10 +93,78 @@ class ExpenseNotifier extends Notifier<ExpenseState> {
     _syncExpenses = di.syncExpenses;
     _searchExpenses = di.searchExpenses;
     _getSummary = di.getSummary;
-    return ExpenseState();
+    return const ExpenseState();
   }
 
-  // --- equality helpers ---
+  // ─── DB READ: load page from local DB ───
+
+  /// initial load or reload — always reads from DB
+  Future<void> loadExpenses() async {
+    _log('LOAD', 'loading first page');
+    state = state.copyWith(isLoading: true);
+    try {
+      final expenses = await _getExpenses(limit: _pageSize, offset: 0);
+      _loadedCount = expenses.length;
+      _log('LOAD', 'got ${expenses.length}, hasMore=${expenses.length >= _pageSize}');
+      state = state.copyWith(
+        expenses: expenses,
+        isLoading: false,
+        hasMore: expenses.length >= _pageSize,
+      );
+    } catch (e) {
+      _log('LOAD', 'ERROR: $e');
+      state = state.copyWith(isLoading: false, error: 'Failed to load');
+    }
+  }
+
+  /// infinite scroll
+  Future<void> loadMore() async {
+    if (_isLoadingMore || !state.hasMore || state.hasActiveFilter) return;
+    _isLoadingMore = true;
+
+    _log('LOAD_MORE', 'offset=$_loadedCount');
+    state = state.copyWith(isLoadingMore: true);
+    try {
+      final nextPage = await _getExpenses(limit: _pageSize, offset: _loadedCount);
+      _loadedCount += nextPage.length;
+      _log('LOAD_MORE', 'got ${nextPage.length}, total=$_loadedCount');
+      state = state.copyWith(
+        expenses: [...state.expenses, ...nextPage],
+        isLoadingMore: false,
+        hasMore: nextPage.length >= _pageSize,
+      );
+    } catch (e) {
+      _log('LOAD_MORE', 'ERROR: $e');
+      state = state.copyWith(isLoadingMore: false);
+    } finally {
+      _isLoadingMore = false;
+    }
+  }
+
+  /// reload all currently loaded pages from DB (preserves scroll position)
+  Future<void> _reloadFromDB() async {
+    final count = _loadedCount > 0 ? _loadedCount : _pageSize;
+    _log('RELOAD', 'reloading $count items from DB');
+    try {
+      final expenses = await _getExpenses(limit: count, offset: 0);
+      _loadedCount = expenses.length;
+      final hasMore = expenses.length >= _pageSize && expenses.length >= count;
+      _log('RELOAD', 'got ${expenses.length}, hasMore=$hasMore');
+
+      // only update UI if data actually changed
+      if (!_listsEqual(expenses, state.expenses)) {
+        _log('RELOAD', 'data changed — updating UI');
+        state = state.copyWith(
+          expenses: expenses,
+          hasMore: hasMore,
+        );
+      } else {
+        _log('RELOAD', 'data unchanged — skipping UI update');
+      }
+    } catch (e) {
+      _log('RELOAD', 'ERROR: $e');
+    }
+  }
 
   bool _listsEqual(List<ExpenseEntity> a, List<ExpenseEntity> b) {
     if (a.length != b.length) return false;
@@ -100,110 +174,19 @@ class ExpenseNotifier extends Notifier<ExpenseState> {
     return true;
   }
 
-  void _emitExpenses(List<ExpenseEntity> newExpenses, {bool? hasMore}) {
-    if (!_listsEqual(newExpenses, state.expenses)) {
-      state = state.copyWith(
-        expenses: newExpenses,
-        isLoading: false,
-        hasMore: hasMore ?? state.hasMore,
-      );
-    } else if (state.isLoading) {
-      state = state.copyWith(isLoading: false);
-    }
-  }
-
-  // --- surgical list update ---
-
-  List<ExpenseEntity> _applySyncToList(
-    List<ExpenseEntity> currentList,
-    SyncResult syncResult,
-  ) {
-    if (!syncResult.hasChanges) return currentList;
-
-    final updated = [...currentList];
-
-    // remove deleted
-    if (syncResult.deleted.isNotEmpty) {
-      final deletedSet = syncResult.deleted.toSet();
-      updated.removeWhere((e) => deletedSet.contains(e.id));
-    }
-
-    // upsert
-    for (final expense in syncResult.upserted) {
-      final index = updated.indexWhere((e) => e.id == expense.id);
-      if (index != -1) {
-        // exists → replace in place
-        updated[index] = expense;
-      } else {
-        // new → insert at correct position (sorted by date desc)
-        final insertAt = updated.indexWhere(
-          (e) => e.date.isBefore(expense.date),
-        );
-        if (insertAt == -1) {
-          updated.add(expense);
-        } else {
-          updated.insert(insertAt, expense);
-        }
-      }
-    }
-
-    // re-sort to handle date changes
-    updated.sort((a, b) => b.date.compareTo(a.date));
-
-    return updated;
-  }
-
-  // --- load ---
-
-  Future<void> loadExpenses({bool silent = false}) async {
-    if (!silent && state.expenses.isEmpty) {
-      state = state.copyWith(isLoading: true);
-    }
-    try {
-      final expenses = await _getExpenses(limit: _pageSize, offset: 0);
-      _emitExpenses(expenses, hasMore: expenses.length >= _pageSize);
-    } catch (e) {
-      state = state.copyWith(isLoading: false, error: 'Failed to load');
-    }
-  }
-
-  Future<void> loadMore() async {
-    if (_isLoadingMore || !state.hasMore || state.hasActiveFilter) return;
-    _isLoadingMore = true;
-
-    state = state.copyWith(isLoadingMore: true);
-    try {
-      final currentCount = state.expenses.length;
-      final nextPage = await _getExpenses(
-        limit: _pageSize,
-        offset: currentCount,
-      );
-      if (state.expenses.length == currentCount) {
-        state = state.copyWith(
-          expenses: [...state.expenses, ...nextPage],
-          isLoadingMore: false,
-          hasMore: nextPage.length >= _pageSize,
-        );
-      } else {
-        state = state.copyWith(isLoadingMore: false);
-      }
-    } catch (_) {
-      state = state.copyWith(isLoadingMore: false);
-    } finally {
-      _isLoadingMore = false;
-    }
-  }
+  // ─── SUMMARY ───
 
   Future<void> loadSummary() async {
     try {
       final summary = await _getSummary();
       if (summary != state.summary) {
+        _log('SUMMARY', 'changed: today=${summary.today}');
         state = state.copyWith(summary: summary);
       }
     } catch (_) {}
   }
 
-  // --- filter / search ---
+  // ─── FILTER / SEARCH ───
 
   Future<void> applyFilter({String? category, String? query}) async {
     final hasCategory = category != null;
@@ -211,12 +194,14 @@ class ExpenseNotifier extends Notifier<ExpenseState> {
 
     if (!hasCategory && !hasQuery) {
       _filterVersion++;
+      _log('FILTER', 'cleared');
       await loadExpenses();
       return;
     }
 
     _filterVersion++;
     final myVersion = _filterVersion;
+    _log('FILTER', 'v$myVersion category=$category query=$query');
 
     state = state.copyWith(
       isLoading: true,
@@ -232,6 +217,7 @@ class ExpenseNotifier extends Notifier<ExpenseState> {
         query: hasQuery ? query : null,
       );
       if (_filterVersion == myVersion) {
+        _log('FILTER', 'v$myVersion got ${results.length} results');
         state = state.copyWith(
           expenses: results,
           isLoading: false,
@@ -247,10 +233,12 @@ class ExpenseNotifier extends Notifier<ExpenseState> {
 
   void clearFilters() {
     _filterVersion++;
+    _log('FILTER', 'clearing');
+    state = state.copyWith(clearCategory: true, clearQuery: true);
     loadExpenses();
   }
 
-  // --- CRUD ---
+  // ─── CRUD ───
 
   Future<void> addExpense({
     required double amount,
@@ -260,6 +248,7 @@ class ExpenseNotifier extends Notifier<ExpenseState> {
     required File imageFile,
   }) async {
     final id = _uuid.v4();
+    _log('ADD', '${id.substring(0, 8)} $category ₹$amount');
 
     final appDir = await getApplicationDocumentsDirectory();
     final fileName = '${id}_receipt${p.extension(imageFile.path)}';
@@ -277,78 +266,77 @@ class ExpenseNotifier extends Notifier<ExpenseState> {
       createdAt: DateTime.now(),
     );
 
+    // write to DB
     await _addExpense(expense);
 
-    // insert at correct position in current list
-    final updated = [...state.expenses];
-    final insertAt = updated.indexWhere((e) => e.date.isBefore(date));
-    if (insertAt == -1) {
-      updated.add(expense);
-    } else {
-      updated.insert(insertAt, expense);
-    }
-    state = state.copyWith(expenses: updated);
+    // reload from DB (new item will be at correct sorted position)
+    await _reloadFromDB();
 
+    // background sync
     try {
-      final syncResult = await _syncExpenses();
-      if (syncResult.hasChanges) {
-        final synced = _applySyncToList(state.expenses, syncResult);
-        _emitExpenses(synced);
-      }
+      final changed = await _syncExpenses();
+      if (changed) await _reloadFromDB();
       await loadSummary();
     } catch (_) {}
   }
 
   Future<void> deleteExpense(String id, bool isSynced) async {
-    final previousExpenses = state.expenses;
+    _log('DELETE', id.substring(0, 8));
+
+    // optimistic UI removal
+    final prev = state.expenses;
     state = state.copyWith(
-      expenses: state.expenses.where((e) => e.id != id).toList(),
+      expenses: prev.where((e) => e.id != id).toList(),
     );
+    _loadedCount = state.expenses.length;
 
     try {
       await _deleteExpense(id, isSynced);
       await loadSummary();
     } catch (_) {
-      state = state.copyWith(expenses: previousExpenses);
+      // rollback
+      state = state.copyWith(expenses: prev);
+      _loadedCount = prev.length;
     }
   }
 
-  // --- sync ---
+  // ─── SYNC ───
 
   Future<void> syncAll() async {
-    if (_isSyncing) return;
+    if (_isSyncing) {
+      _log('SYNC', 'skipped — busy');
+      return;
+    }
     _isSyncing = true;
-    try {
-      final syncResult = await _syncExpenses();
+    _log('SYNC', 'start. loaded=$_loadedCount filter=${state.hasActiveFilter}');
 
-      if (syncResult.hasChanges) {
+    try {
+      final dbChanged = await _syncExpenses();
+      _log('SYNC', 'dbChanged=$dbChanged');
+
+      if (dbChanged) {
         if (state.hasActiveFilter) {
-          // filter active → re-run server search (can't surgically update filtered results)
+          _log('SYNC', 'filter active — re-running search');
           await applyFilter(
             category: state.activeCategory,
             query: state.activeQuery,
           );
         } else {
-          // no filter → apply changes surgically to current list
-          final updated = _applySyncToList(state.expenses, syncResult);
-          _emitExpenses(updated);
+          // reload whatever the user has scrolled to
+          await _reloadFromDB();
         }
       } else {
-        // no remote changes — check if local sync status changed
-        if (!state.hasActiveFilter) {
-          final hadUnsynced = state.expenses.any((e) => !e.isSynced);
-          if (hadUnsynced) {
-            final page = await _getExpenses(
-              limit: state.expenses.length.clamp(_pageSize, 500),
-              offset: 0,
-            );
-            _emitExpenses(page);
-          }
+        // no remote changes — but local sync status might have changed
+        if (!state.hasActiveFilter && state.expenses.any((e) => !e.isSynced)) {
+          _log('SYNC', 'refreshing sync status');
+          await _reloadFromDB();
         }
       }
 
       await loadSummary();
-    } catch (_) {
+      _log('SYNC', 'complete');
+    } catch (e) {
+      _log('SYNC', 'ERROR: $e');
     } finally {
       _isSyncing = false;
     }

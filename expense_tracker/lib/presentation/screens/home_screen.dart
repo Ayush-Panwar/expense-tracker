@@ -289,7 +289,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           Expanded(
             child: isLoading
                 ? const Center(child: CircularProgressIndicator())
-                : const _ExpenseList(),
+                : _ExpenseList(scrollController: _scrollController),
           ),
         ],
       ),
@@ -304,7 +304,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
 // separate widget — only watches expenses list, not summary
 class _ExpenseList extends ConsumerWidget {
-  const _ExpenseList();
+  final ScrollController scrollController;
+  const _ExpenseList({required this.scrollController});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -334,6 +335,7 @@ class _ExpenseList extends ConsumerWidget {
         await ref.read(expenseProvider.notifier).syncAll();
       },
       child: ListView.builder(
+        controller: scrollController,
         padding: const EdgeInsets.only(bottom: 80),
         itemCount: expenses.length + (hasMore && !hasActiveFilter ? 1 : 0),
         itemBuilder: (context, index) {

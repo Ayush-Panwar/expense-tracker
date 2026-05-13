@@ -1,9 +1,9 @@
 import '../entities/expense.dart';
 import '../entities/summary.dart';
-import '../entities/sync_result.dart';
 
 abstract class ExpenseRepository {
   Future<List<ExpenseEntity>> getLocalExpensesPaginated(int limit, int offset);
+  Future<int> getLocalExpenseCount();
 
   Future<List<ExpenseEntity>> searchExpenses({
     String? category,
@@ -16,5 +16,5 @@ abstract class ExpenseRepository {
   Future<void> addExpense(ExpenseEntity expense);
   Future<void> deleteExpense(String id, bool isSynced);
   Future<void> pushLocalChanges();
-  Future<SyncResult> pullRemoteChanges();
+  Future<bool> pullRemoteChanges(); // true if DB was modified
 }

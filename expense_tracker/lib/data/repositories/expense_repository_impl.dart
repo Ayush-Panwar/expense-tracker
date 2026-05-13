@@ -1,7 +1,6 @@
 import 'dart:io';
 import '../../domain/entities/expense.dart';
 import '../../domain/entities/summary.dart';
-import '../../domain/entities/sync_result.dart';
 import '../../domain/repositories/expense_repository.dart';
 import '../datasources/local_datasource.dart';
 import '../datasources/remote_datasource.dart';
@@ -22,6 +21,11 @@ class ExpenseRepositoryImpl implements ExpenseRepository {
   }
 
   @override
+  Future<int> getLocalExpenseCount() {
+    return localDatasource.getExpenseCount();
+  }
+
+  @override
   Future<List<ExpenseEntity>> searchExpenses({
     String? category,
     String? query,
@@ -38,7 +42,7 @@ class ExpenseRepositoryImpl implements ExpenseRepository {
       final expenses = result['expenses'] as List<dynamic>;
       return expenses.map((json) => ExpenseModel.fromJson(json)).toList();
     } catch (_) {
-      // offline fallback — paginated local filter
+      // offline fallback
       final all = await localDatasource.getExpensesPaginated(limit, 0);
       return all.where((e) {
         if (category != null && e.category != category) return false;
@@ -63,7 +67,6 @@ class ExpenseRepositoryImpl implements ExpenseRepository {
         month: (data['month'] as num).toDouble(),
       );
     } catch (_) {
-      // offline — return zeros, not worth calculating locally
       return const SummaryEntity();
     }
   }
@@ -134,7 +137,6 @@ class ExpenseRepositoryImpl implements ExpenseRepository {
           imageFile: imageFile,
         );
 
-        // server returned deleted record — it was deleted on another device
         if (response['deletedAt'] != null) {
           await localDatasource.deleteExpense(expense.id);
         } else {
@@ -146,10 +148,9 @@ class ExpenseRepositoryImpl implements ExpenseRepository {
   }
 
   @override
-  Future<SyncResult> pullRemoteChanges() async {
+  Future<bool> pullRemoteChanges() async {
     try {
-      final allUpserted = <ExpenseEntity>[];
-      final allDeleted = <String>[];
+      bool hadChanges = false;
       bool hasMore = true;
       String? cursor = await localDatasource.getLastSyncedAt();
 
@@ -166,25 +167,24 @@ class ExpenseRepositoryImpl implements ExpenseRepository {
           break;
         }
 
+        hadChanges = true;
+
         for (final json in upserted) {
           final model = ExpenseModel.fromJson(json);
           await localDatasource.upsertExpense(model);
-          allUpserted.add(model);
         }
 
         for (final id in deleted) {
-          final strId = id as String;
-          await localDatasource.deleteExpense(strId);
-          allDeleted.add(strId);
+          await localDatasource.deleteExpense(id as String);
         }
 
         cursor = serverTime;
         await localDatasource.setLastSyncedAt(serverTime);
       }
 
-      return SyncResult(upserted: allUpserted, deleted: allDeleted);
+      return hadChanges;
     } catch (_) {
-      return const SyncResult();
+      return false;
     }
   }
 }

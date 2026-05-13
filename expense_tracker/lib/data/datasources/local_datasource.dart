@@ -12,8 +12,8 @@ class LocalDatasource {
     return rows.map((e) => ExpenseModel.fromDrift(e)).toList();
   }
 
-  Future<int> getExpenseCount() {
-    return _db.getExpenseCount();
+  Future<int> getExpenseCount() async {
+    return await _db.getExpenseCount();
   }
 
   Future<List<ExpenseModel>> getUnsyncedExpenses() async {
