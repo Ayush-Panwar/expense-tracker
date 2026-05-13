@@ -109,16 +109,17 @@ const getChangesSince = async (userId, since) => {
     const changes = await prisma.expense.findMany({
         where,
         orderBy: { updatedAt: 'asc' },
-        take: 500,
+        take: 501, // fetch one extra to check if more exist
     });
 
-    const upserted = changes.filter(e => e.deletedAt === null);
-    const deleted = changes.filter(e => e.deletedAt !== null).map(e => e.id);
-    const total = await prisma.expense.count({ where });
-    const hasMore = total > 500;
+    const hasMore = changes.length > 500;
+    const batch = hasMore ? changes.slice(0, 500) : changes;
 
-    const serverTime = changes.length > 0
-        ? changes[changes.length - 1].updatedAt.toISOString()
+    const upserted = batch.filter(e => e.deletedAt === null);
+    const deleted = batch.filter(e => e.deletedAt !== null).map(e => e.id);
+
+    const serverTime = batch.length > 0
+        ? batch[batch.length - 1].updatedAt.toISOString()
         : new Date().toISOString();
 
     return { upserted, deleted, serverTime, hasMore };
