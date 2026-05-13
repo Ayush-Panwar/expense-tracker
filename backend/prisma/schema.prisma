@@ -27,10 +27,14 @@ model Expense {
   date      DateTime @db.Date
   imageUrl  String?  @map("image_url")
   createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
   deletedAt DateTime? @map("deleted_at")
 
   userId    String   @map("user_id")
   user      User     @relation(fields: [userId], references: [id])
 
+  @@index([userId, updatedAt])
+  @@index([userId, date])
+  @@index([userId, deletedAt])
   @@map("expenses")
 }

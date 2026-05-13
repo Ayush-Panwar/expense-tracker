@@ -1,4 +1,3 @@
-
 const validateSignup = (req, res, next) => {
     const { email, password } = req.body;
 
@@ -18,6 +17,16 @@ const validateSignup = (req, res, next) => {
     next();
 };
 
+const validateLogin = (req, res, next) => {
+    const { email, password } = req.body;
+
+    if (!email || !password) {
+        return res.status(422).json({ error: 'Email and password are required' });
+    }
+
+    next();
+};
+
 const validateExpense = (req, res, next) => {
     const { id, amount, category, date } = req.body;
 
@@ -32,11 +41,12 @@ const validateExpense = (req, res, next) => {
         });
     }
 
-    if (isNaN(parseFloat(amount)) || parseFloat(amount) <= 0) {
+    const parsedAmount = parseFloat(amount);
+    if (isNaN(parsedAmount) || parsedAmount <= 0 || parsedAmount > 99999999.99) {
         return res.status(422).json({ error: 'Amount must be a positive number' });
     }
 
     next();
 };
 
-module.exports = { validateSignup, validateExpense };
+module.exports = { validateSignup, validateLogin, validateExpense };
