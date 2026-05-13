@@ -9,6 +9,7 @@ const signup = async (req, res) => {
         if (err.message === 'Email already exists') {
             return res.status(422).json({ error: err.message });
         }
+        console.error('signup error:', err);
         res.status(500).json({ error: 'Something went wrong' });
     }
 };
@@ -22,6 +23,7 @@ const login = async (req, res) => {
         if (err.message === 'Invalid credentials') {
             return res.status(401).json({ error: err.message });
         }
+        console.error('login error:', err);
         res.status(500).json({ error: 'Something went wrong' });
     }
 };
