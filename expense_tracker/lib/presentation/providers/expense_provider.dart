@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:uuid/uuid.dart';
 import 'package:path_provider/path_provider.dart';
@@ -14,9 +13,6 @@ import '../../domain/usecases/search_expenses.dart';
 import '../../domain/usecases/get_summary.dart';
 import '../../core/di.dart';
 
-void _log(String tag, String msg) {
-  debugPrint('[EP][$tag] $msg');
-}
 
 class ExpenseState {
   final List<ExpenseEntity> expenses;
@@ -79,13 +75,12 @@ class ExpenseNotifier extends Notifier<ExpenseState> {
   bool _isSyncing = false;
   bool _isLoadingMore = false;
   int _filterVersion = 0;
-  int _loadedCount = 0; // tracks how many items user has scrolled to
+  int _loadedCount = 0;
 
   static const _pageSize = 20;
 
   @override
   ExpenseState build() {
-    _log('BUILD', 'initializing');
     final di = DI();
     _getExpenses = di.getExpenses;
     _addExpense = di.addExpense;
@@ -96,73 +91,82 @@ class ExpenseNotifier extends Notifier<ExpenseState> {
     return const ExpenseState();
   }
 
-  // ─── DB READ: load page from local DB ───
+  // ─── INITIAL LOAD ───
+  // smart: try local DB first, if empty fetch page 1 from server directly
+  // then background sync fills the rest
 
-  /// initial load or reload — always reads from DB
-  Future<void> loadExpenses() async {
-    _log('LOAD', 'loading first page');
+  Future<void> initialLoad() async {
     state = state.copyWith(isLoading: true);
+
     try {
-      final expenses = await _getExpenses(limit: _pageSize, offset: 0);
-      _loadedCount = expenses.length;
-      _log('LOAD', 'got ${expenses.length}, hasMore=${expenses.length >= _pageSize}');
-      state = state.copyWith(
-        expenses: expenses,
-        isLoading: false,
-        hasMore: expenses.length >= _pageSize,
-      );
+      // try local DB first
+      final localCount = await _getExpenses.count();
+
+      if (localCount > 0) {
+        // have cached data — show immediately
+        final expenses = await _getExpenses(limit: _pageSize, offset: 0);
+        _loadedCount = expenses.length;
+        state = state.copyWith(
+          expenses: expenses,
+          isLoading: false,
+          hasMore: expenses.length >= _pageSize,
+        );
+      } else {
+        // empty local DB (first login or cleared)
+        // fetch page 1 directly from server for instant display
+        try {
+          final serverPage = await _getExpenses.fromServer(page: 1, limit: _pageSize);
+          _loadedCount = serverPage.length;
+          state = state.copyWith(
+            expenses: serverPage,
+            isLoading: false,
+            hasMore: serverPage.length >= _pageSize,
+          );
+        } catch (_) {
+          // offline + empty DB — show empty state
+          state = state.copyWith(isLoading: false, expenses: const []);
+        }
+      }
     } catch (e) {
-      _log('LOAD', 'ERROR: $e');
       state = state.copyWith(isLoading: false, error: 'Failed to load');
     }
   }
 
-  /// infinite scroll
+  // ─── DB READ ───
+
+  Future<void> _reloadFromDB() async {
+    final count = _loadedCount > 0 ? _loadedCount : _pageSize;
+    try {
+      final expenses = await _getExpenses(limit: count, offset: 0);
+      _loadedCount = expenses.length;
+      // hasMore = true only if we got everything we asked for (more might exist)
+      final hasMore = expenses.length >= count;
+
+      if (!_listsEqual(expenses, state.expenses)) {
+        state = state.copyWith(expenses: expenses, hasMore: hasMore);
+      } else {
+      }
+    } catch (e) {
+    }
+  }
+
   Future<void> loadMore() async {
     if (_isLoadingMore || !state.hasMore || state.hasActiveFilter) return;
     _isLoadingMore = true;
 
-    _log('LOAD_MORE', 'offset=$_loadedCount');
     state = state.copyWith(isLoadingMore: true);
     try {
       final nextPage = await _getExpenses(limit: _pageSize, offset: _loadedCount);
       _loadedCount += nextPage.length;
-      _log('LOAD_MORE', 'got ${nextPage.length}, total=$_loadedCount');
       state = state.copyWith(
         expenses: [...state.expenses, ...nextPage],
         isLoadingMore: false,
         hasMore: nextPage.length >= _pageSize,
       );
     } catch (e) {
-      _log('LOAD_MORE', 'ERROR: $e');
       state = state.copyWith(isLoadingMore: false);
     } finally {
       _isLoadingMore = false;
-    }
-  }
-
-  /// reload all currently loaded pages from DB (preserves scroll position)
-  Future<void> _reloadFromDB() async {
-    final count = _loadedCount > 0 ? _loadedCount : _pageSize;
-    _log('RELOAD', 'reloading $count items from DB');
-    try {
-      final expenses = await _getExpenses(limit: count, offset: 0);
-      _loadedCount = expenses.length;
-      final hasMore = expenses.length >= _pageSize && expenses.length >= count;
-      _log('RELOAD', 'got ${expenses.length}, hasMore=$hasMore');
-
-      // only update UI if data actually changed
-      if (!_listsEqual(expenses, state.expenses)) {
-        _log('RELOAD', 'data changed — updating UI');
-        state = state.copyWith(
-          expenses: expenses,
-          hasMore: hasMore,
-        );
-      } else {
-        _log('RELOAD', 'data unchanged — skipping UI update');
-      }
-    } catch (e) {
-      _log('RELOAD', 'ERROR: $e');
     }
   }
 
@@ -180,7 +184,6 @@ class ExpenseNotifier extends Notifier<ExpenseState> {
     try {
       final summary = await _getSummary();
       if (summary != state.summary) {
-        _log('SUMMARY', 'changed: today=${summary.today}');
         state = state.copyWith(summary: summary);
       }
     } catch (_) {}
@@ -194,14 +197,13 @@ class ExpenseNotifier extends Notifier<ExpenseState> {
 
     if (!hasCategory && !hasQuery) {
       _filterVersion++;
-      _log('FILTER', 'cleared');
-      await loadExpenses();
+      _loadedCount = 0;
+      await _reloadFirstPage(clearFilter: true);
       return;
     }
 
     _filterVersion++;
     final myVersion = _filterVersion;
-    _log('FILTER', 'v$myVersion category=$category query=$query');
 
     state = state.copyWith(
       isLoading: true,
@@ -217,7 +219,6 @@ class ExpenseNotifier extends Notifier<ExpenseState> {
         query: hasQuery ? query : null,
       );
       if (_filterVersion == myVersion) {
-        _log('FILTER', 'v$myVersion got ${results.length} results');
         state = state.copyWith(
           expenses: results,
           isLoading: false,
@@ -233,9 +234,24 @@ class ExpenseNotifier extends Notifier<ExpenseState> {
 
   void clearFilters() {
     _filterVersion++;
-    _log('FILTER', 'clearing');
-    state = state.copyWith(clearCategory: true, clearQuery: true);
-    loadExpenses();
+    _loadedCount = 0;
+    _reloadFirstPage(clearFilter: true);
+  }
+
+  Future<void> _reloadFirstPage({bool clearFilter = false}) async {
+    try {
+      final expenses = await _getExpenses(limit: _pageSize, offset: 0);
+      _loadedCount = expenses.length;
+      state = state.copyWith(
+        expenses: expenses,
+        isLoading: false,
+        hasMore: expenses.length >= _pageSize,
+        clearCategory: clearFilter,
+        clearQuery: clearFilter,
+      );
+    } catch (_) {
+      state = state.copyWith(isLoading: false);
+    }
   }
 
   // ─── CRUD ───
@@ -248,7 +264,6 @@ class ExpenseNotifier extends Notifier<ExpenseState> {
     required File imageFile,
   }) async {
     final id = _uuid.v4();
-    _log('ADD', '${id.substring(0, 8)} $category ₹$amount');
 
     final appDir = await getApplicationDocumentsDirectory();
     final fileName = '${id}_receipt${p.extension(imageFile.path)}';
@@ -266,13 +281,9 @@ class ExpenseNotifier extends Notifier<ExpenseState> {
       createdAt: DateTime.now(),
     );
 
-    // write to DB
     await _addExpense(expense);
-
-    // reload from DB (new item will be at correct sorted position)
     await _reloadFromDB();
 
-    // background sync
     try {
       final changed = await _syncExpenses();
       if (changed) await _reloadFromDB();
@@ -281,9 +292,6 @@ class ExpenseNotifier extends Notifier<ExpenseState> {
   }
 
   Future<void> deleteExpense(String id, bool isSynced) async {
-    _log('DELETE', id.substring(0, 8));
-
-    // optimistic UI removal
     final prev = state.expenses;
     state = state.copyWith(
       expenses: prev.where((e) => e.id != id).toList(),
@@ -294,7 +302,6 @@ class ExpenseNotifier extends Notifier<ExpenseState> {
       await _deleteExpense(id, isSynced);
       await loadSummary();
     } catch (_) {
-      // rollback
       state = state.copyWith(expenses: prev);
       _loadedCount = prev.length;
     }
@@ -304,39 +311,31 @@ class ExpenseNotifier extends Notifier<ExpenseState> {
 
   Future<void> syncAll() async {
     if (_isSyncing) {
-      _log('SYNC', 'skipped — busy');
       return;
     }
     _isSyncing = true;
-    _log('SYNC', 'start. loaded=$_loadedCount filter=${state.hasActiveFilter}');
 
     try {
       final dbChanged = await _syncExpenses();
-      _log('SYNC', 'dbChanged=$dbChanged');
 
       if (dbChanged) {
         if (state.hasActiveFilter) {
-          _log('SYNC', 'filter active — re-running search');
           await applyFilter(
             category: state.activeCategory,
             query: state.activeQuery,
           );
         } else {
-          // reload whatever the user has scrolled to
           await _reloadFromDB();
         }
       } else {
-        // no remote changes — but local sync status might have changed
+        // check if sync status flags changed (isSynced false → true)
         if (!state.hasActiveFilter && state.expenses.any((e) => !e.isSynced)) {
-          _log('SYNC', 'refreshing sync status');
           await _reloadFromDB();
         }
       }
 
       await loadSummary();
-      _log('SYNC', 'complete');
     } catch (e) {
-      _log('SYNC', 'ERROR: $e');
     } finally {
       _isSyncing = false;
     }

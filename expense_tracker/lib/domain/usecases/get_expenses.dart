@@ -10,6 +10,10 @@ class GetExpenses {
     return repository.getLocalExpensesPaginated(limit, offset);
   }
 
+  Future<List<ExpenseEntity>> fromServer({int page = 1, int limit = 20}) {
+    return repository.getRemoteExpensesPaginated(page, limit);
+  }
+
   Future<int> count() {
     return repository.getLocalExpenseCount();
   }

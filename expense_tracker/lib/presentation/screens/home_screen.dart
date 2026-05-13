@@ -34,10 +34,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    Future.microtask(() {
-      ref.read(expenseProvider.notifier).loadExpenses();
-      ref.read(expenseProvider.notifier).loadSummary();
-      ref.read(expenseProvider.notifier).syncAll();
+    Future.microtask(() async {
+      final notifier = ref.read(expenseProvider.notifier);
+      await notifier.initialLoad();
+      notifier.loadSummary();
+      notifier.syncAll();
     });
 
     // sync when wifi comes back
@@ -57,8 +58,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   }
 
   void _onScroll() {
-    if (_scrollController.position.pixels >=
-        _scrollController.position.maxScrollExtent - 200) {
+    final pixels = _scrollController.position.pixels;
+    final max = _scrollController.position.maxScrollExtent;
+    if (pixels >= max - 200) {
       ref.read(expenseProvider.notifier).loadMore();
     }
   }
@@ -318,6 +320,7 @@ class _ExpenseList extends ConsumerWidget {
     final hasActiveFilter = ref.watch(
       expenseProvider.select((s) => s.hasActiveFilter),
     );
+
 
     if (expenses.isEmpty) {
       return hasActiveFilter

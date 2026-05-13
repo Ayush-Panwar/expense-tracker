@@ -26,6 +26,13 @@ class ExpenseRepositoryImpl implements ExpenseRepository {
   }
 
   @override
+  Future<List<ExpenseEntity>> getRemoteExpensesPaginated(int page, int limit) async {
+    final result = await remoteDatasource.getExpenses(page: page, limit: limit);
+    final expenses = result['expenses'] as List<dynamic>;
+    return expenses.map((json) => ExpenseModel.fromJson(json)).toList();
+  }
+
+  @override
   Future<List<ExpenseEntity>> searchExpenses({
     String? category,
     String? query,

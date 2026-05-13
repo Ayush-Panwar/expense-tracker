@@ -1,403 +1,103 @@
-Launching lib/main.dart on RMX3868 in debug mode...
-Running Gradle task 'assembleDebug'...
-✓ Built build/app/outputs/flutter-apk/app-debug.apk
-Installing build/app/outputs/flutter-apk/app-debug.apk...
-D/FlutterJNI(19915): Beginning load of flutter...
-D/FlutterJNI(19915): flutter (null) was loaded normally!
-I/flutter (19915): [IMPORTANT:flutter/shell/platform/android/android_context_vk_impeller.cc(62)] Using the Impeller rendering backend (Vulkan).
-D/FlutterRenderer(19915): Width is zero. 0,0
-D/FlutterRenderer(19915): Width is zero. 0,0
-D/FlutterJNI(19915): Sending viewport metrics to the engine.
-D/FlutterJNI(19915): Sending viewport metrics to the engine.
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-Debug service listening on ws://127.0.0.1:49647/e7suH6LEG34=/ws
+Performing hot reload...
 Syncing files to device RMX3868...
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-D/VRI[MainActivity](19915):  debugCancelDraw some OnPreDrawListener onPreDraw return false,cancelDraw=true,count=50,android.view.ViewRootImpl@5f3d12
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-I/expense_tracker(19915): Compiler allocated 6913KB to compile void android.view.ViewRootImpl.performTraversals()
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-I/Choreographer(19915): Skipped 150 frames!  The application may be doing too much work on its main thread.
-W/VRI[MainActivity](19915): performTraversals: cancelAndRedraw, mLastPerformTraversalsSkipDrawReasonpredraw_io.flutter.embedding.android.FlutterActivityAndFragmentDelegate$2
-I/GrallocExtra(19915): gralloc_extra_query:is_SW3D 0
-I/GrallocExtra(19915): gralloc_extra_query:is_SW3D 0
-D/BLASTBufferQueue(19915): [SurfaceView[com.example.expense_tracker/com.example.expense_tracker.MainActivity]#1](f:0,a:1) acquireNextBufferLocked size=1080x2400 mFrameNumber=1 applyTransaction=true mTimestamp=540153174179195(auto) mPendingTransactions.size=0 graphicBufferId=85534273699850 transform=0
-W/libc    (19915): Access denied finding property "ro.vendor.mbrain.mode"
-D/expense_tracker(19915): Can't load libmbrainSDK
-D/SurfaceView(19915): 100071398 finishedDrawing
-D/SurfaceView(19915): 100071398 performDrawFinished mAttachedToWindow true
-D/ViewRootImplExtImpl(19915): wrapConfigInfoIntoFlags rotation=0, smallestScreenWidthDp=360, relayoutAsync=false, flags=0, newFlags=23592960, residentWS=false, title=com.example.expense_tracker/com.example.expense_tracker.MainActivity
-D/VRI[MainActivity](19915): relayoutWindow result, sizeChanged:false, surfaceControlChanged:false, transformHintChanged:false, mSurfaceSize:Point(1080, 2400), mLastSurfaceSize:Point(1080, 2400), mWidth:1080, mHeight:2400, requestedWidth:1080, requestedHeight:2400, transformHint:0, installOrientation:0, displayRotation:0, isSurfaceValid:true, attr.flag:-2122252032, tmpFrames:ClientWindowFrames{frame=[0,0][1080,2400] display=[0,0][1080,2400] parentFrame=[0,0][0,0]}, relayoutAsync:false, mSyncSeqId:0
-W/VRI[MainActivity](19915): updateBlastSurfaceIfNeeded, surfaceSize:Point(1080, 2400), lastSurfaceSize:Point(1080, 2400), format:-3, blastBufferQueue:android.graphics.BLASTBufferQueue@1231622
-D/VRI[MainActivity](19915):  debugCancelDraw  cancelDraw=false,count = 200,android.view.ViewRootImpl@5f3d12
-D/ProfileInstaller(19915): Installing profile for com.example.expense_tracker
-I/SurfaceControl(19915):  setExtendedRangeBrightness sc=Surface(name=com.example.expense_tracker/com.example.expense_tracker.MainActivity)/@0xc149e70,currentBufferRatio=1.0,desiredRatio=1.0
-D/SurfaceView(19915): 100071398 dispatchDraw mDrawFinished true isAboveParent false (mPrivateFlags & PFLAG_SKIP_DRAW) 128
-D/SurfaceView(19915): 100071398 clearSurfaceViewPort mCornerRadius 0.0
-D/BLASTBufferQueue(19915): [VRI[MainActivity]#0](f:0,a:1) acquireNextBufferLocked size=1080x2400 mFrameNumber=1 applyTransaction=true mTimestamp=540153307333964(auto) mPendingTransactions.size=0 graphicBufferId=85534273699859 transform=0
-D/VRI[MainActivity](19915): Received frameCommittedCallback lastAttemptedDrawFrameNum=1 didProduceBuffer=true syncBuffer=false
-D/VRI[MainActivity](19915): draw finished. seqId=0
-D/VRI[MainActivity](19915): onFocusEvent true
-D/OplusScrollToTopManager(19915): com.example.expense_tracker/com.example.expense_tracker.MainActivity,This com.android.internal.policy.DecorView{5f5be86 V.E...... R....... 0,0-1080,2400 aid=0 alpha=1.0 viewInfo = }[MainActivity] change focus to true
-D/OplusSystemUINavigationGestureExtImpl(19915): regionString = null
-D/OplusSystemUINavigationGestureExtImpl(19915): regionString = null
-D/OplusInputMethodManagerInternal(19915): get inputMethodManager extension: com.android.internal.view.IInputMethodManager$Stub$Proxy@879cb88
-D/ViewRootImplExtImpl(19915): the up motion event handled by client, just return
-I/ImeTracker(19915): com.example.expense_tracker:6dc6bb75: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
-D/InputMethodManager(19915): showSoftInput() view=io.flutter.embedding.android.FlutterView{b3e39cc VFE...... .F....ID 0,0-1080,2400 #1 aid=1073741824 alpha=1.0 viewInfo = } flags=0 reason=SHOW_SOFT_INPUT
-D/InputConnectionAdaptor(19915): The input method toggled cursor monitoring on
-D/callGcSupression(19915): java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.Object java.lang.reflect.Method.invoke(java.lang.Object, java.lang.Object[])' on a null object reference
-W/VRI[MainActivity](19915): handleResized abandoned!
-D/callGcSupression(19915): java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.Object java.lang.reflect.Method.invoke(java.lang.Object, java.lang.Object[])' on a null object reference
-W/VRI[MainActivity](19915): handleResized abandoned!
-D/InsetsController(19915): show(ime(), fromIme=true)
-W/InteractionJankMonitor(19915): Initializing without READ_DEVICE_CONFIG permission. enabled=false, interval=1, missedFrameThreshold=3, frameTimeThreshold=64, package=com.example.expense_tracker
-D/FlutterJNI(19915): Sending viewport metrics to the engine.
-D/callGcSupression(19915): java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.Object java.lang.reflect.Method.invoke(java.lang.Object, java.lang.Object[])' on a null object reference
-W/VRI[MainActivity](19915): handleResized abandoned!
-D/FlutterJNI(19915): Sending viewport metrics to the engine.
-D/FlutterJNI(19915): Sending viewport metrics to the engine.
-D/FlutterJNI(19915): Sending viewport metrics to the engine.
-D/FlutterJNI(19915): Sending viewport metrics to the engine.
-D/FlutterJNI(19915): Sending viewport metrics to the engine.
-D/FlutterJNI(19915): Sending viewport metrics to the engine.
-D/FlutterJNI(19915): Sending viewport metrics to the engine.
-D/FlutterJNI(19915): Sending viewport metrics to the engine.
-D/FlutterJNI(19915): Sending viewport metrics to the engine.
-D/FlutterJNI(19915): Sending viewport metrics to the engine.
-D/FlutterJNI(19915): Sending viewport metrics to the engine.
-D/FlutterJNI(19915): Sending viewport metrics to the engine.
-D/FlutterJNI(19915): Sending viewport metrics to the engine.
-D/FlutterJNI(19915): Sending viewport metrics to the engine.
-D/FlutterJNI(19915): Sending viewport metrics to the engine.
-D/FlutterJNI(19915): Sending viewport metrics to the engine.
-I/Quality (19915): local:ime_anim_jank,pkgName:com.google.android.inputmethod.latin/com.android.inputmethod.latin.LatinIME,flag:2,jankCount:1,jankCountLocal:1,preCount:1
-I/Quality (19915): ime_anim_jank:1,49931448,1
-I/ImeTracker(19915): com.example.expense_tracker:6dc6bb75: onShown
-D/FlutterJNI(19915): Sending viewport metrics to the engine.
-D/FlutterJNI(19915): Sending viewport metrics to the engine.
-W/expense_tracker(19915): userfaultfd: MOVE ioctl seems unsupported: Connection timed out
-I/expense_tracker(19915): NativeAlloc concurrent mark compact GC freed 9539KB AllocSpace bytes, 6(152KB) LOS objects, 70% free, 2512KB/8656KB, paused 111us,1.846ms total 106.151ms
-W/expense_tracker(19915): ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~j1Vc38PsGsp5pCjlUY9RGg==/com.google.android.marvin.talkback-diMAyha9qPxiTBzmJguzrQ==/base.apk' with 1 weak references
-W/expense_tracker(19915): ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~j1Vc38PsGsp5pCjlUY9RGg==/com.google.android.marvin.talkback-diMAyha9qPxiTBzmJguzrQ==/split_config.arm64_v8a.apk' with 1 weak references
-W/expense_tracker(19915): ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~FaQl3o-G8ctJhfFH-4P3JA==/ai.perplexity.app.android-Tn7VvCEZwhsx_WQtoScqTA==/base.apk' with 1 weak references
-W/expense_tracker(19915): ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~FaQl3o-G8ctJhfFH-4P3JA==/ai.perplexity.app.android-Tn7VvCEZwhsx_WQtoScqTA==/split_config.arm64_v8a.apk' with 1 weak references
-W/expense_tracker(19915): ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~FaQl3o-G8ctJhfFH-4P3JA==/ai.perplexity.app.android-Tn7VvCEZwhsx_WQtoScqTA==/split_config.xxhdpi.apk' with 1 weak references
-W/expense_tracker(19915): ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~GGD_I88yG3iVIEotIKcr6g==/cn.wps.moffice_eng-i51P5rVLR8YMMIfADvTMKw==/base.apk' with 1 weak references
-W/expense_tracker(19915): ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~GGD_I88yG3iVIEotIKcr6g==/cn.wps.moffice_eng-i51P5rVLR8YMMIfADvTMKw==/split_config.arm64_v8a.apk' with 1 weak references
-W/expense_tracker(19915): ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~GGD_I88yG3iVIEotIKcr6g==/cn.wps.moffice_eng-i51P5rVLR8YMMIfADvTMKw==/split_config.en.apk' with 1 weak references
-W/expense_tracker(19915): ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~GGD_I88yG3iVIEotIKcr6g==/cn.wps.moffice_eng-i51P5rVLR8YMMIfADvTMKw==/split_config.xxhdpi.apk' with 1 weak references
-W/expense_tracker(19915): ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~GGD_I88yG3iVIEotIKcr6g==/cn.wps.moffice_eng-i51P5rVLR8YMMIfADvTMKw==/split_vassonic.apk' with 1 weak references
-W/expense_tracker(19915): ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~GGD_I88yG3iVIEotIKcr6g==/cn.wps.moffice_eng-i51P5rVLR8YMMIfADvTMKw==/split_vassonic.config.xxhdpi.apk' with 1 weak references
-W/expense_tracker(19915): ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~jpytACALeW21_wd5qKh5Zg==/com.anthropic.claude-m5Tk0MXcgcfbka71FqogmQ==/base.apk' with 1 weak references
-W/expense_tracker(19915): ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~jpytACALeW21_wd5qKh5Zg==/com.anthropic.claude-m5Tk0MXcgcfbka71FqogmQ==/split_config.arm64_v8a.apk' with 1 weak references
-W/expense_tracker(19915): ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~jpytACALeW21_wd5qKh5Zg==/com.anthropic.claude-m5Tk0MXcgcfbka71FqogmQ==/split_config.bn.apk' with 1 weak references
-W/expense_tracker(19915): ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~jpytACALeW21_wd5qKh5Zg==/com.anthropic.claude-m5Tk0MXcgcfbka71FqogmQ==/split_config.en.apk' with 1 weak references
-W/expense_tracker(19915): ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~jpytACALeW21_wd5qKh5Zg==/com.anthropic.claude-m5Tk0MXcgcfbka71FqogmQ==/split_config.gu.apk' with 1 weak references
-W/expense_tracker(19915): ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~jpytACALeW21_wd5qKh5Zg==/com.anthropic.claude-m5Tk0MXcgcfbka71FqogmQ==/split_config.mr.apk' with 1 weak references
-W/expense_tracker(19915): ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~jpytACALeW21_wd5qKh5Zg==/com.anthropic.claude-m5Tk0MXcgcfbka71FqogmQ==/split_config.te.apk' with 1 weak references
-W/expense_tracker(19915): ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~jpytACALeW21_wd5qKh5Zg==/com.anthropic.claude-m5Tk0MXcgcfbka71FqogmQ==/split_config.xxhdpi.apk' with 1 weak references
-W/expense_tracker(19915): ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/OppoNote2/OppoNote2.apk' with 1 weak references
-W/expense_tracker(19915): ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~HMC93HgzKiN4UedZus1GZA==/com.openai.chatgpt-u51rlK0h1MrPKO7eFTWPIQ==/base.apk' with 1 weak references
-W/expense_tracker(19915): ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~HMC93HgzKiN4UedZus1GZA==/com.openai.chatgpt-u51rlK0h1MrPKO7eFTWPIQ==/split_config.arm64_v8a.apk' with 1 weak references
-W/expense_tracker(19915): ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~HMC93HgzKiN4UedZus1GZA==/com.openai.chatgpt-u51rlK0h1MrPKO7eFTWPIQ==/split_config.en.apk' with 1 weak references
-W/expense_tracker(19915): ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~HMC93HgzKiN4UedZus1GZA==/com.openai.chatgpt-u51rlK0h1MrPKO7eFTWPIQ==/split_config.xxhdpi.apk' with 1 weak references
-W/expense_tracker(19915): ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~VpcVfNfv2nlw2IQ8MvOaRg==/com.reddit.frontpage-xE2qsz7VBM61lxJCqiN1OA==/base.apk' with 1 weak references
-W/expense_tracker(19915): ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~VpcVfNfv2nlw2IQ8MvOaRg==/com.reddit.frontpage-xE2qsz7VBM61lxJCqiN1OA==/split_config.arm64_v8a.apk' with 1 weak references
-W/expense_tracker(19915): ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~VpcVfNfv2nlw2IQ8MvOaRg==/com.reddit.frontpage-xE2qsz7VBM61lxJCqiN1OA==/split_config.en.apk' with 1 weak references
-W/expense_tracker(19915): ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~VpcVfNfv2nlw2IQ8MvOaRg==/com.reddit.frontpage-xE2qsz7VBM61lxJCqiN1OA==/split_config.xxhdpi.apk' with 1 weak references
-W/expense_tracker(19915): ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~DXz5LBp9Xk1qEpHCZWk3FQ==/com.truecaller--6QnAy6U4LrdUX7e9IuQFg==/base.apk' with 1 weak references
-W/expense_tracker(19915): ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~DXz5LBp9Xk1qEpHCZWk3FQ==/com.truecaller--6QnAy6U4LrdUX7e9IuQFg==/split_config.arm64_v8a.apk' with 1 weak references
-W/expense_tracker(19915): ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~DXz5LBp9Xk1qEpHCZWk3FQ==/com.truecaller--6QnAy6U4LrdUX7e9IuQFg==/split_config.xxhdpi.apk' with 1 weak references
-W/expense_tracker(19915): ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~DXz5LBp9Xk1qEpHCZWk3FQ==/com.truecaller--6QnAy6U4LrdUX7e9IuQFg==/split_insights_category_model.apk' with 1 weak references
-W/expense_tracker(19915): ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~DXz5LBp9Xk1qEpHCZWk3FQ==/com.truecaller--6QnAy6U4LrdUX7e9IuQFg==/split_insights_category_model.config.arm64_v8a.apk' with 1 weak references
-D/ViewRootImplExtImpl(19915): the up motion event handled by client, just return
-I/ImeTracker(19915): com.example.expense_tracker:36a955aa: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
-D/InputMethodManager(19915): showSoftInput() view=io.flutter.embedding.android.FlutterView{b3e39cc VFE...... .F...... 0,0-1080,2400 #1 aid=1073741824 alpha=1.0 viewInfo = } flags=0 reason=SHOW_SOFT_INPUT
-D/InputConnectionAdaptor(19915): The input method toggled cursor monitoring on
-D/InsetsController(19915): show(ime(), fromIme=true)
-I/ImeTracker(19915): com.example.expense_tracker:a5418811: onCancelled at PHASE_CLIENT_APPLY_ANIMATION
-D/callGcSupression(19915): java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.Object java.lang.reflect.Method.invoke(java.lang.Object, java.lang.Object[])' on a null object reference
-W/VRI[MainActivity](19915): handleResized abandoned!
-D/FlutterJNI(19915): Sending viewport metrics to the engine.
-D/InputConnectionAdaptor(19915): The input method toggled cursor monitoring off
-D/InsetsController(19915): show(ime(), fromIme=true)
-I/ImeTracker(19915): com.example.expense_tracker:36a955aa: onCancelled at PHASE_CLIENT_APPLY_ANIMATION
-D/InputConnectionAdaptor(19915): The input method toggled cursor monitoring on
-D/ViewRootImplExtImpl(19915): the up motion event handled by client, just return
-D/ViewRootImplExtImpl(19915): the up motion event handled by client, just return
-I/flutter (19915): [EXPENSE_PROVIDER][BUILD] initializing notifier
-I/flutter (19915): [EXPENSE_PROVIDER][LOAD] silent=false, currentCount=0
-I/flutter (19915): [EXPENSE_PROVIDER][SUMMARY] fetching from server
-I/flutter (19915): [EXPENSE_PROVIDER][SYNC] starting. listCount=0, filter=false, category=null
-I/flutter (19915): [EXPENSE_PROVIDER][LOAD] fetched 0 from local DB, hasMore=false
-I/ImeTracker(19915): com.example.expense_tracker:276cffc6: onRequestHide at ORIGIN_CLIENT reason HIDE_SOFT_INPUT fromUser false
-I/flutter (19915): [EXPENSE_PROVIDER][SYNC] skipped — already syncing
-D/InputConnectionAdaptor(19915): The input method toggled cursor monitoring off
-D/InsetsController(19915): hide(ime(), fromIme=true)
-D/FlutterJNI(19915): Sending viewport metrics to the engine.
-D/callGcSupression(19915): java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.Object java.lang.reflect.Method.invoke(java.lang.Object, java.lang.Object[])' on a null object reference
-W/VRI[MainActivity](19915): handleResized abandoned!
-D/FlutterJNI(19915): Sending viewport metrics to the engine.
-D/FlutterJNI(19915): Sending viewport metrics to the engine.
-D/FlutterJNI(19915): Sending viewport metrics to the engine.
-D/FlutterJNI(19915): Sending viewport metrics to the engine.
-D/FlutterJNI(19915): Sending viewport metrics to the engine.
-D/FlutterJNI(19915): Sending viewport metrics to the engine.
-D/FlutterJNI(19915): Sending viewport metrics to the engine.
-D/FlutterJNI(19915): Sending viewport metrics to the engine.
-D/FlutterJNI(19915): Sending viewport metrics to the engine.
-D/FlutterJNI(19915): Sending viewport metrics to the engine.
-D/FlutterJNI(19915): Sending viewport metrics to the engine.
-D/FlutterJNI(19915): Sending viewport metrics to the engine.
-D/FlutterJNI(19915): Sending viewport metrics to the engine.
-D/FlutterJNI(19915): Sending viewport metrics to the engine.
-D/FlutterJNI(19915): Sending viewport metrics to the engine.
-D/FlutterJNI(19915): Sending viewport metrics to the engine.
-D/FlutterJNI(19915): Sending viewport metrics to the engine.
-D/FlutterJNI(19915): Sending viewport metrics to the engine.
-I/ImeTracker(19915): com.example.expense_tracker:d964e530: onRequestHide at ORIGIN_CLIENT reason HIDE_SOFT_INPUT_ON_ANIMATION_STATE_CHANGED fromUser false
-I/ImeTracker(19915): com.example.expense_tracker:276cffc6: onHidden
-D/FlutterJNI(19915): Sending viewport metrics to the engine.
-D/FlutterJNI(19915): Sending viewport metrics to the engine.
-D/callGcSupression(19915): java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.Object java.lang.reflect.Method.invoke(java.lang.Object, java.lang.Object[])' on a null object reference
-W/VRI[MainActivity](19915): handleResized abandoned!
-D/callGcSupression(19915): java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.Object java.lang.reflect.Method.invoke(java.lang.Object, java.lang.Object[])' on a null object reference
-W/VRI[MainActivity](19915): handleResized abandoned!
-I/flutter (19915): [EXPENSE_PROVIDER][SUMMARY] changed=true, today=115137.0, week=119947.0, month=128419.0
-I/flutter (19915): [EXPENSE_PROVIDER][SYNC] result: 51 upserted, 6 deleted, hasChanges=true
-I/flutter (19915): [EXPENSE_PROVIDER][SYNC] no filter — applying surgical update
-I/flutter (19915): [EXPENSE_PROVIDER][SURGICAL] applying 51 upserts, 6 deletes to list of 0
-I/flutter (19915): [EXPENSE_PROVIDER][SURGICAL] removed 0 deleted items
-I/flutter (19915): [EXPENSE_PROVIDER][SURGICAL] inserted new: 4a4cf26e at position 0
-I/flutter (19915): [EXPENSE_PROVIDER][SURGICAL] inserted new: 22660e3e at position 1
-I/flutter (19915): [EXPENSE_PROVIDER][SURGICAL] inserted new: 5cee4746 at position 2
-I/flutter (19915): [EXPENSE_PROVIDER][SURGICAL] inserted new: c4a97520 at position 3
-I/flutter (19915): [EXPENSE_PROVIDER][SURGICAL] inserted new: 5ab8a1dc at position 4
-I/flutter (19915): [EXPENSE_PROVIDER][SURGICAL] inserted new: 2c511c65 at position 4
-I/flutter (19915): [EXPENSE_PROVIDER][SURGICAL] inserted new: 7c93e5c8 at position 4
-I/flutter (19915): [EXPENSE_PROVIDER][SURGICAL] inserted new: 0f62ce89 at position 0
-I/flutter (19915): [EXPENSE_PROVIDER][SURGICAL] inserted new: 14f11b5d at position 5
-I/flutter (19915): [EXPENSE_PROVIDER][SURGICAL] inserted new: fe2e000e at position 9
-I/flutter (19915): [EXPENSE_PROVIDER][SURGICAL] inserted new: 1ad376f8 at position 9
-I/flutter (19915): [EXPENSE_PROVIDER][SURGICAL] inserted new: 2fae70a3 at position 1
-I/flutter (19915): [EXPENSE_PROVIDER][SURGICAL] inserted new: 8efeed51 at position 2
-I/flutter (19915): [EXPENSE_PROVIDER][SURGICAL] inserted new: cc99270c at position 10
-I/flutter (19915): [EXPENSE_PROVIDER][SURGICAL] inserted new: 8135dd64 at position 8
-I/flutter (19915): [EXPENSE_PROVIDER][SURGICAL] inserted new: fdf48ef0 at position 12
-I/flutter (19915): [EXPENSE_PROVIDER][SURGICAL] inserted new: 7e624e11 at position 8
-I/flutter (19915): [EXPENSE_PROVIDER][SURGICAL] inserted new: 0eebbf52 at position 17
-I/flutter (19915): [EXPENSE_PROVIDER][SURGICAL] inserted new: c3037954 at position 2
-I/flutter (19915): [EXPENSE_PROVIDER][SURGICAL] inserted new: 115e0fb4 at position 15
-I/flutter (19915): [EXPENSE_PROVIDER][SURGICAL] inserted new: d22df3a3 at position 18
-I/flutter (19915): [EXPENSE_PROVIDER][SURGICAL] inserted new: 35c5555c at position 19
-I/flutter (19915): [EXPENSE_PROVIDER][SURGICAL] inserted new: 8beff2c7 at position 15
-I/flutter (19915): [EXPENSE_PROVIDER][SURGICAL] inserted new: a619b56e at position 1
-I/flutter (19915): [EXPENSE_PROVIDER][SURGICAL] inserted new: 37dc403d at position 10
-I/flutter (19915): [EXPENSE_PROVIDER][SURGICAL] inserted new: 8fc5e86f at position 22
-I/flutter (19915): [EXPENSE_PROVIDER][SURGICAL] inserted new: 7dbafad0 at position 12
-I/flutter (19915): [EXPENSE_PROVIDER][SURGICAL] inserted new: 1d885d85 at position 13
-I/flutter (19915): [EXPENSE_PROVIDER][SURGICAL] inserted new: 9a76fcb7 at position 26
-I/flutter (19915): [EXPENSE_PROVIDER][SURGICAL] inserted new: 329692ee at position 18
-I/flutter (19915): [EXPENSE_PROVIDER][SURGICAL] inserted new: 29477fae at position 20
-I/flutter (19915): [EXPENSE_PROVIDER][SURGICAL] inserted new: 39d0efe2 at position 24
-I/flutter (19915): [EXPENSE_PROVIDER][SURGICAL] inserted new: 91d13019 at position 4
-I/flutter (19915): [EXPENSE_PROVIDER][SURGICAL] inserted new: 4d256a67 at position 31
-I/flutter (19915): [EXPENSE_PROVIDER][SURGICAL] inserted new: a19ce19c at position 24
-I/flutter (19915): [EXPENSE_PROVIDER][SURGICAL] inserted new: 9bcc2531 at position 20
-I/flutter (19915): [EXPENSE_PROVIDER][SURGICAL] inserted new: 1aa84b84 at position 15
-I/flutter (19915): [EXPENSE_PROVIDER][SURGICAL] inserted new: 1a433071 at position 12
-I/flutter (19915): [EXPENSE_PROVIDER][SURGICAL] inserted new: 4c242516 at position 35
-I/flutter (19915): [EXPENSE_PROVIDER][SURGICAL] inserted new: 45ad6aee at position 18
-I/flutter (19915): [EXPENSE_PROVIDER][SURGICAL] inserted new: 1051ce6a at position 38
-I/flutter (19915): [EXPENSE_PROVIDER][SURGICAL] inserted new: 1fae09bc at position 33
-I/flutter (19915): [EXPENSE_PROVIDER][SURGICAL] inserted new: 04a7df28 at position 26
-I/flutter (19915): [EXPENSE_PROVIDER][SURGICAL] inserted new: 3be58f38 at position 20
-I/flutter (19915): [EXPENSE_PROVIDER][SURGICAL] inserted new: 16610206 at position 5
-I/flutter (19915): [EXPENSE_PROVIDER][SURGICAL] inserted new: 58596d23 at position 22
-I/flutter (19915): [EXPENSE_PROVIDER][SURGICAL] inserted new: eeaec370 at position 7
-I/flutter (19915): [EXPENSE_PROVIDER][SURGICAL] inserted new: 4ae11947 at position 8
-I/flutter (19915): [EXPENSE_PROVIDER][SURGICAL] inserted new: de332ca3 at position 9
-I/flutter (19915): [EXPENSE_PROVIDER][SURGICAL] inserted new: b0da161a at position 10
-I/flutter (19915): [EXPENSE_PROVIDER][SURGICAL] inserted new: 3089fb88 at position 11
-I/flutter (19915): [EXPENSE_PROVIDER][SURGICAL] final list count: 51
-I/flutter (19915): [EXPENSE_PROVIDER][EMIT] listsEqual=false, newCount=51, oldCount=0
-I/flutter (19915): [EXPENSE_PROVIDER][EMIT] updating state with new expenses
-I/flutter (19915): [EXPENSE_PROVIDER][SUMMARY] fetching from server
-I/ScrollIdentify(19915): on fling
-D/ViewRootImplExtImpl(19915): the up motion event handled by client, just return
-I/flutter (19915): [EXPENSE_PROVIDER][SUMMARY] changed=false, today=115137.0, week=119947.0, month=128419.0
-I/flutter (19915): [EXPENSE_PROVIDER][SYNC] complete
-I/ScrollIdentify(19915): on fling
-D/ViewRootImplExtImpl(19915): the up motion event handled by client, just return
-I/flutter (19915): [EXPENSE_PROVIDER][LOAD_MORE] skipped — no more pages
-I/flutter (19915): [EXPENSE_PROVIDER][LOAD_MORE] skipped — no more pages
-I/flutter (19915): [EXPENSE_PROVIDER][LOAD_MORE] skipped — no more pages
-I/flutter (19915): [EXPENSE_PROVIDER][LOAD_MORE] skipped — no more pages
-I/flutter (19915): [EXPENSE_PROVIDER][LOAD_MORE] skipped — no more pages
-I/flutter (19915): [EXPENSE_PROVIDER][LOAD_MORE] skipped — no more pages
-I/flutter (19915): [EXPENSE_PROVIDER][LOAD_MORE] skipped — no more pages
-I/flutter (19915): [EXPENSE_PROVIDER][LOAD_MORE] skipped — no more pages
-I/flutter (19915): [EXPENSE_PROVIDER][LOAD_MORE] skipped — no more pages
-I/flutter (19915): [EXPENSE_PROVIDER][LOAD_MORE] skipped — no more pages
-I/flutter (19915): [EXPENSE_PROVIDER][LOAD_MORE] skipped — no more pages
-I/ScrollIdentify(19915): on fling
-D/ViewRootImplExtImpl(19915): the up motion event handled by client, just return
-I/ScrollIdentify(19915): on fling
-D/ViewRootImplExtImpl(19915): the up motion event handled by client, just return
+I/flutter (32210): [LIST] build: count=5, hasMore=false, filter=true, itemCount=5
+Reloaded 0 libraries in 854ms (compile: 288 ms, reload: 0 ms, reassemble: 110 ms).
+I/flutter (32210): [EP][SYNC] start. loaded=51 filter=true
+I/flutter (32210): [EP][SYNC] dbChanged=false
+I/flutter (32210): [EP][SYNC] done
+I/flutter (32210): [EP][SYNC] start. loaded=51 filter=true
+I/flutter (32210): [EP][SYNC] dbChanged=false
+I/flutter (32210): [EP][SYNC] done
+D/ViewRootImplExtImpl(32210): the up motion event handled by client, just return
+D/ViewRootImplExtImpl(32210): the up motion event handled by client, just return
+I/flutter (32210): [EP][SYNC] start. loaded=51 filter=true
+I/flutter (32210): [EP][SYNC] dbChanged=false
+I/flutter (32210): [EP][SYNC] done
+I/flutter (32210): [EP][SYNC] start. loaded=51 filter=true
+I/flutter (32210): [EP][SYNC] dbChanged=false
+I/flutter (32210): [EP][SYNC] done
+I/flutter (32210): [EP][SYNC] start. loaded=51 filter=true
+I/flutter (32210): [EP][SYNC] dbChanged=false
+I/flutter (32210): [EP][SYNC] done
+I/flutter (32210): [EP][SYNC] start. loaded=51 filter=true
+I/flutter (32210): [EP][SYNC] dbChanged=false
+I/flutter (32210): [EP][SYNC] done
+I/flutter (32210): [SCROLL] trigger loadMore: pixels=13.75, max=28.66666666666663
+I/flutter (32210): [SCROLL] trigger loadMore: pixels=28.66666666666663, max=28.66666666666663
+I/ScrollIdentify(32210): on fling
+D/ViewRootImplExtImpl(32210): the up motion event handled by client, just return
+I/ScrollIdentify(32210): on fling
+D/ViewRootImplExtImpl(32210): the up motion event handled by client, just return
+I/flutter (32210): [EP][SYNC] start. loaded=51 filter=true
+I/flutter (32210): [SCROLL] trigger loadMore: pixels=10.583333333333314, max=28.66666666666663
+I/flutter (32210): [SCROLL] trigger loadMore: pixels=0.0, max=28.66666666666663
+I/ScrollIdentify(32210): on fling
+D/ViewRootImplExtImpl(32210): the up motion event handled by client, just return
+D/ViewRootImplExtImpl(32210): the up motion event handled by client, just return
+I/flutter (32210): [EP][FILTER] v7 cat=null q=test
+I/flutter (32210): [EP][SYNC] dbChanged=false
+I/flutter (32210): [EP][FILTER] v7 → 5 results
+I/flutter (32210): [LIST] build: count=5, hasMore=false, filter=true, itemCount=5
+I/flutter (32210): [EP][SYNC] done
+I/flutter (32210): [SCROLL] trigger loadMore: pixels=16.29166666666663, max=28.66666666666663
+I/flutter (32210): [SCROLL] trigger loadMore: pixels=28.66666666666663, max=28.66666666666663
+I/ScrollIdentify(32210): on fling
+D/ViewRootImplExtImpl(32210): the up motion event handled by client, just return
+I/ScrollIdentify(32210): on fling
+D/ViewRootImplExtImpl(32210): the up motion event handled by client, just return
+I/flutter (32210): [SCROLL] trigger loadMore: pixels=12.249999999999943, max=28.66666666666663
+I/flutter (32210): [SCROLL] trigger loadMore: pixels=0.0, max=28.66666666666663
+I/ScrollIdentify(32210): on fling
+D/ViewRootImplExtImpl(32210): the up motion event handled by client, just return
+I/VelocityTracker(32210): LSQ2 speed rezero
+I/VelocityTracker(32210): LSQ2 speed rezero
+I/ScrollIdentify(32210): on fling
+D/ViewRootImplExtImpl(32210): the up motion event handled by client, just return
+I/flutter (32210): [EP][SYNC] start. loaded=51 filter=true
+I/ScrollIdentify(32210): on fling
+D/ViewRootImplExtImpl(32210): the up motion event handled by client, just return
+D/ViewRootImplExtImpl(32210): the up motion event handled by client, just return
+I/flutter (32210): [LIST] build: count=5, hasMore=false, filter=true, itemCount=5
+I/flutter (32210): [EP][PAGE1] got 20, clearFilter=true
+I/ImeTracker(32210): com.example.expense_tracker:88cffb1d: onRequestHide at ORIGIN_CLIENT reason HIDE_SOFT_INPUT fromUser false
+I/flutter (32210): [LIST] build: count=20, hasMore=true, filter=false, itemCount=21
+I/flutter (32210): [EP][SYNC] dbChanged=false
+I/ScrollIdentify(32210): on fling
+D/ViewRootImplExtImpl(32210): the up motion event handled by client, just return
+I/flutter (32210): [SCROLL] trigger loadMore: pixels=1398.0791403183246, max=1585.6666666666665
+I/flutter (32210): [EP][MORE] offset=20
+I/flutter (32210): [EP][MORE] got 20, total=40
+I/flutter (32210): [SCROLL] trigger loadMore: pixels=1477.6411154619034, max=1585.6666666666665
+I/flutter (32210): [EP][MORE] offset=40
+I/flutter (32210): [LIST] build: count=40, hasMore=true, filter=false, itemCount=41
+I/flutter (32210): [EP][MORE] got 11, total=51
+I/flutter (32210): [LIST] build: count=51, hasMore=false, filter=false, itemCount=51
+I/ScrollIdentify(32210): on fling
+D/ViewRootImplExtImpl(32210): the up motion event handled by client, just return
+I/flutter (32210): [SCROLL] trigger loadMore: pixels=4474.58204233295, max=4663.666666666667
+I/flutter (32210): [SCROLL] trigger loadMore: pixels=4522.373708999617, max=4663.666666666667
+I/flutter (32210): [SCROLL] trigger loadMore: pixels=4568.33204233295, max=4663.666666666667
+I/flutter (32210): [EP][SYNC] done
+I/flutter (32210): [SCROLL] trigger loadMore: pixels=4612.45704233295, max=4663.666666666667
+I/ScrollIdentify(32210): on fling
+D/ViewRootImplExtImpl(32210): the up motion event handled by client, just return
+I/flutter (32210): [SCROLL] trigger loadMore: pixels=4663.666666666667, max=4663.666666666667
+I/ScrollIdentify(32210): on fling
+D/ViewRootImplExtImpl(32210): the up motion event handled by client, just return
+I/flutter (32210): [EP][SYNC] start. loaded=51 filter=false
+I/flutter (32210): [EP][SYNC] dbChanged=false
+I/flutter (32210): [EP][SYNC] done
+I/flutter (32210): [EP][SYNC] start. loaded=51 filter=false
+I/flutter (32210): [EP][SYNC] dbChanged=false
+I/flutter (32210): [EP][SYNC] done
+I/flutter (32210): [EP][SYNC] start. loaded=51 filter=false
+I/flutter (32210): [EP][SYNC] dbChanged=false
+I/flutter (32210): [EP][SYNC] done
+I/ScrollIdentify(32210): on fling
+D/ViewRootImplExtImpl(32210): the up motion event handled by client, just return
+I/flutter (32210): [EP][SYNC] start. loaded=51 filter=false
+I/flutter (32210): [EP][SYNC] dbChanged=true
+I/flutter (32210): [EP][RELOAD] loading 51 from DB
+I/flutter (32210): [EP][RELOAD] data changed — 50 items
+I/flutter (32210): [LIST] build: count=50, hasMore=true, filter=false, itemCount=51
+I/flutter (32210): [EP][SYNC] done
