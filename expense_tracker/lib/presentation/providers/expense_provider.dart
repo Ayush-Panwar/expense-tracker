@@ -127,7 +127,7 @@ class ExpenseNotifier extends Notifier<ExpenseState> {
           state = state.copyWith(isLoading: false, expenses: const []);
         }
       }
-    } catch (e) {
+    } catch (_) {
       state = state.copyWith(isLoading: false, error: 'Failed to load');
     }
   }
@@ -136,22 +136,25 @@ class ExpenseNotifier extends Notifier<ExpenseState> {
 
   Future<void> _reloadFromDB() async {
     final count = _loadedCount > 0 ? _loadedCount : _pageSize;
+    // fetch one extra to detect if more exist (same trick as server's 501)
+    final fetchCount = count + 1;
     try {
-      final expenses = await _getExpenses(limit: count, offset: 0);
+      final fetched = await _getExpenses(limit: fetchCount, offset: 0);
+      final hasMore = fetched.length > count;
+      // only keep `count` items in state, not the extra
+      final expenses = hasMore ? fetched.sublist(0, count) : fetched;
       _loadedCount = expenses.length;
-      // hasMore = true only if we got everything we asked for (more might exist)
-      final hasMore = expenses.length >= count;
 
       if (!_listsEqual(expenses, state.expenses)) {
         state = state.copyWith(expenses: expenses, hasMore: hasMore);
-      } else {
       }
-    } catch (e) {
-    }
+    } catch (_) {}
   }
 
   Future<void> loadMore() async {
-    if (_isLoadingMore || !state.hasMore || state.hasActiveFilter) return;
+    if (_isLoadingMore || !state.hasMore || state.hasActiveFilter) {
+      return;
+    }
     _isLoadingMore = true;
 
     state = state.copyWith(isLoadingMore: true);
@@ -163,7 +166,7 @@ class ExpenseNotifier extends Notifier<ExpenseState> {
         isLoadingMore: false,
         hasMore: nextPage.length >= _pageSize,
       );
-    } catch (e) {
+    } catch (_) {
       state = state.copyWith(isLoadingMore: false);
     } finally {
       _isLoadingMore = false;
@@ -282,11 +285,30 @@ class ExpenseNotifier extends Notifier<ExpenseState> {
     );
 
     await _addExpense(expense);
-    await _reloadFromDB();
+    _loadedCount++;
+
+    // respect active filter
+    if (state.hasActiveFilter) {
+      await applyFilter(
+        category: state.activeCategory,
+        query: state.activeQuery,
+      );
+    } else {
+      await _reloadFromDB();
+    }
 
     try {
       final changed = await _syncExpenses();
-      if (changed) await _reloadFromDB();
+      if (changed) {
+        if (state.hasActiveFilter) {
+          await applyFilter(
+            category: state.activeCategory,
+            query: state.activeQuery,
+          );
+        } else {
+          await _reloadFromDB();
+        }
+      }
       await loadSummary();
     } catch (_) {}
   }
@@ -335,7 +357,7 @@ class ExpenseNotifier extends Notifier<ExpenseState> {
       }
 
       await loadSummary();
-    } catch (e) {
+    } catch (_) {
     } finally {
       _isSyncing = false;
     }

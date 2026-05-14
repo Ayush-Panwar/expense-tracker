@@ -46,7 +46,6 @@ dependencies:
   connectivity_plus: ^7.1.1
   drift: ^2.33.0
   drift_sqflite: ^2.0.1
-  equatable: ^2.0.8
 
 dev_dependencies:
   flutter_test:

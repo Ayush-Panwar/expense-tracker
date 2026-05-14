@@ -1,0 +1,129 @@
+Performing hot restart...
+Syncing files to device sdk gphone64 arm64...
+Restarted application in 10,346ms.
+I/flutter (20175): [EP][INIT] starting
+I/expense_tracker(20175): Background concurrent mark compact GC freed 1629KB AllocSpace bytes, 15(704KB) LOS objects, 49% free, 2580KB/5160KB, paused 186us,31.045ms total 13.998s
+W/WindowOnBackDispatcher(20175): sendCancelIfRunning: isInProgress=false callback=io.flutter.embedding.android.FlutterActivity$1@df438ee
+D/FlutterJNI(20175): Sending viewport metrics to the engine.
+D/VRI[MainActivity](20175): visibilityChanged oldVisibility=true newVisibility=false
+D/FlutterJNI(20175): Sending viewport metrics to the engine.
+D/MediaScannerConnection(20175): Scanned /data/user/0/com.example.expense_tracker/cache/0c3fe67c-42d3-423d-a3a6-962d051878bc549321704532843369.jpg to null
+D/InsetsController(20175): hide(ime(), fromIme=false)
+I/ImeTracker(20175): com.example.expense_tracker:ff743cb2: onCancelled at PHASE_CLIENT_ALREADY_HIDDEN
+W/HWUI    (20175): Image decoding logging dropped!
+I/expense_tracker(20175): AssetManager2(0xb400007ddfc1d238) locale list changing from [] to [en-US]
+I/ImeTracker(20175): com.example.expense_tracker:ed2ee5c6: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
+D/InsetsController(20175): show(ime(), fromIme=false)
+D/InsetsController(20175): Setting requestedVisibleTypes to -1 (was -9)
+D/InputConnectionAdaptor(20175): The input method toggled cursor monitoring on
+D/FlutterJNI(20175): Sending viewport metrics to the engine.
+D/FlutterJNI(20175): Sending viewport metrics to the engine.
+D/FlutterJNI(20175): Sending viewport metrics to the engine.
+D/FlutterJNI(20175): Sending viewport metrics to the engine.
+D/FlutterJNI(20175): Sending viewport metrics to the engine.
+D/FlutterJNI(20175): Sending viewport metrics to the engine.
+D/FlutterJNI(20175): Sending viewport metrics to the engine.
+D/FlutterJNI(20175): Sending viewport metrics to the engine.
+D/FlutterJNI(20175): Sending viewport metrics to the engine.
+D/FlutterJNI(20175): Sending viewport metrics to the engine.
+D/FlutterJNI(20175): Sending viewport metrics to the engine.
+D/FlutterJNI(20175): Sending viewport metrics to the engine.
+D/FlutterJNI(20175): Sending viewport metrics to the engine.
+I/ImeTracker(20175): com.example.expense_tracker:ed2ee5c6: onShown
+D/FlutterJNI(20175): Sending viewport metrics to the engine.
+D/FlutterJNI(20175): Sending viewport metrics to the engine.
+I/ImeTracker(20175): com.example.expense_tracker:94c59f59: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
+D/InsetsController(20175): show(ime(), fromIme=false)
+I/ImeTracker(20175): com.example.expense_tracker:94c59f59: onCancelled at PHASE_CLIENT_APPLY_ANIMATION
+D/InputConnectionAdaptor(20175): The input method toggled cursor monitoring on
+I/flutter (20175): [EP][ADD] saved to DB, reloading...
+I/flutter (20175): [EP][RELOAD] loading 5 from DB. current state: isLoading=false, isLoadingMore=false, hasMore=false
+I/flutter (20175): [EP][RELOAD] got 5, hasMore=true
+I/flutter (20175): [EP][RELOAD] data changed — updating state
+I/flutter (20175): [EP][RELOAD] after: isLoading=false, isLoadingMore=false, hasMore=true
+I/flutter (20175): [EP][ADD] reloaded. count=5, isLoading=false, isLoadingMore=false, hasMore=true
+I/flutter (20175): [EP][ADD] starting sync after add...
+I/flutter (20175): [EP][ADD] sync done. changed=true
+I/flutter (20175): [EP][ADD] reloading after sync...
+I/flutter (20175): [EP][RELOAD] loading 5 from DB. current state: isLoading=false, isLoadingMore=false, hasMore=true
+I/flutter (20175): [EP][RELOAD] got 5, hasMore=true
+I/flutter (20175): [EP][RELOAD] data changed — updating state
+I/flutter (20175): [EP][RELOAD] after: isLoading=false, isLoadingMore=false, hasMore=true
+I/flutter (20175): [EP][ADD] complete. count=5, isLoading=false, isLoadingMore=false, hasMore=true
+I/ImeTracker(20175): com.example.expense_tracker:a7e8a3f4: onRequestHide at ORIGIN_CLIENT reason HIDE_SOFT_INPUT fromUser false
+D/InsetsController(20175): hide(ime(), fromIme=false)
+W/WindowOnBackDispatcher(20175): sendCancelIfRunning: isInProgress=false callback=android.view.ImeBackAnimationController@ff65f61
+D/InsetsController(20175): Setting requestedVisibleTypes to -9 (was -1)
+D/FlutterJNI(20175): Sending viewport metrics to the engine.
+W/WindowOnBackDispatcher(20175): sendCancelIfRunning: isInProgress=false callback=io.flutter.embedding.android.FlutterActivity$1@df438ee
+D/FlutterJNI(20175): Sending viewport metrics to the engine.
+D/FlutterJNI(20175): Sending viewport metrics to the engine.
+D/FlutterJNI(20175): Sending viewport metrics to the engine.
+D/FlutterJNI(20175): Sending viewport metrics to the engine.
+D/FlutterJNI(20175): Sending viewport metrics to the engine.
+D/FlutterJNI(20175): Sending viewport metrics to the engine.
+D/FlutterJNI(20175): Sending viewport metrics to the engine.
+D/FlutterJNI(20175): Sending viewport metrics to the engine.
+D/FlutterJNI(20175): Sending viewport metrics to the engine.
+D/FlutterJNI(20175): Sending viewport metrics to the engine.
+D/FlutterJNI(20175): Sending viewport metrics to the engine.
+D/FlutterJNI(20175): Sending viewport metrics to the engine.
+D/FlutterJNI(20175): Sending viewport metrics to the engine.
+I/ImeTracker(20175): system_server:6150b4c9: onCancelled at PHASE_CLIENT_ON_CONTROLS_CHANGED
+W/WindowOnBackDispatcher(20175): sendCancelIfRunning: isInProgress=false callback=io.flutter.embedding.android.FlutterActivity$1@df438ee
+D/FlutterJNI(20175): Sending viewport metrics to the engine.
+D/FlutterJNI(20175): Sending viewport metrics to the engine.
+D/MediaScannerConnection(20175): Scanned /data/user/0/com.example.expense_tracker/cache/e1413c5b-4bba-468c-9e21-89093073fd5f8732048700441059170.jpg to null
+W/HWUI    (20175): Image decoding logging dropped!
+I/Choreographer(20175): Skipped 32 frames!  The application may be doing too much work on its main thread.
+D/InsetsController(20175): hide(ime(), fromIme=false)
+I/ImeTracker(20175): com.example.expense_tracker:90f5acea: onCancelled at PHASE_CLIENT_ALREADY_HIDDEN
+I/expense_tracker(20175): AssetManager2(0xb400007ddfc1afd8) locale list changing from [] to [en-US]
+I/ImeTracker(20175): com.example.expense_tracker:674fa1fd: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser false
+D/InsetsController(20175): show(ime(), fromIme=false)
+D/InsetsController(20175): Setting requestedVisibleTypes to -1 (was -9)
+D/InputConnectionAdaptor(20175): The input method toggled cursor monitoring on
+D/FlutterJNI(20175): Sending viewport metrics to the engine.
+D/FlutterJNI(20175): Sending viewport metrics to the engine.
+D/FlutterJNI(20175): Sending viewport metrics to the engine.
+D/FlutterJNI(20175): Sending viewport metrics to the engine.
+D/FlutterJNI(20175): Sending viewport metrics to the engine.
+D/FlutterJNI(20175): Sending viewport metrics to the engine.
+D/FlutterJNI(20175): Sending viewport metrics to the engine.
+I/ImeTracker(20175): com.example.expense_tracker:674fa1fd: onShown
+D/FlutterJNI(20175): Sending viewport metrics to the engine.
+D/FlutterJNI(20175): Sending viewport metrics to the engine.
+I/flutter (20175): [EP][ADD] saved to DB, reloading...
+I/flutter (20175): [EP][RELOAD] loading 6 from DB. current state: isLoading=false, isLoadingMore=false, hasMore=false
+I/flutter (20175): [EP][RELOAD] got 6, hasMore=true
+I/flutter (20175): [EP][RELOAD] data changed — updating state
+I/flutter (20175): [EP][RELOAD] after: isLoading=false, isLoadingMore=false, hasMore=true
+I/flutter (20175): [EP][ADD] reloaded. count=6, isLoading=false, isLoadingMore=false, hasMore=true
+I/flutter (20175): [EP][ADD] starting sync after add...
+I/flutter (20175): [EP][ADD] sync done. changed=true
+I/flutter (20175): [EP][ADD] reloading after sync...
+I/flutter (20175): [EP][RELOAD] loading 6 from DB. current state: isLoading=false, isLoadingMore=false, hasMore=true
+I/flutter (20175): [EP][RELOAD] got 6, hasMore=true
+I/flutter (20175): [EP][RELOAD] data changed — updating state
+I/flutter (20175): [EP][RELOAD] after: isLoading=false, isLoadingMore=false, hasMore=true
+I/flutter (20175): [EP][ADD] complete. count=6, isLoading=false, isLoadingMore=false, hasMore=true
+I/ImeTracker(20175): com.example.expense_tracker:312988ba: onRequestHide at ORIGIN_CLIENT reason HIDE_SOFT_INPUT fromUser false
+D/InsetsController(20175): hide(ime(), fromIme=false)
+W/WindowOnBackDispatcher(20175): sendCancelIfRunning: isInProgress=false callback=android.view.ImeBackAnimationController@ff65f61
+D/InsetsController(20175): Setting requestedVisibleTypes to -9 (was -1)
+W/WindowOnBackDispatcher(20175): sendCancelIfRunning: isInProgress=false callback=io.flutter.embedding.android.FlutterActivity$1@df438ee
+D/FlutterJNI(20175): Sending viewport metrics to the engine.
+D/FlutterJNI(20175): Sending viewport metrics to the engine.
+D/FlutterJNI(20175): Sending viewport metrics to the engine.
+D/FlutterJNI(20175): Sending viewport metrics to the engine.
+D/FlutterJNI(20175): Sending viewport metrics to the engine.
+D/FlutterJNI(20175): Sending viewport metrics to the engine.
+D/FlutterJNI(20175): Sending viewport metrics to the engine.
+D/FlutterJNI(20175): Sending viewport metrics to the engine.
+D/FlutterJNI(20175): Sending viewport metrics to the engine.
+D/FlutterJNI(20175): Sending viewport metrics to the engine.
+D/FlutterJNI(20175): Sending viewport metrics to the engine.
+D/FlutterJNI(20175): Sending viewport metrics to the engine.
+D/FlutterJNI(20175): Sending viewport metrics to the engine.
+D/FlutterJNI(20175): Sending viewport metrics to the engine.
+I/ImeTracker(20175): system_server:ee36c8d1: onCancelled at PHASE_CLIENT_ON_CONTROLS_CHANGED
