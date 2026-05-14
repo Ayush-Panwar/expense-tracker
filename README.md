@@ -1,4 +1,4 @@
-# Camera-First Expense Tracker
+# Expense Tracker
 
 A Flutter mobile application that lets users capture expenses by photographing receipts. The camera is the primary entry point — point, shoot, tag, and move on.
 
