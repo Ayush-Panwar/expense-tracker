@@ -224,7 +224,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           ),
           IconButton(
             icon: const Icon(Icons.logout),
-            onPressed: () => ref.read(authProvider.notifier).logout(),
+            onPressed: () {
+              ref.read(expenseProvider.notifier).reset();
+              ref.read(authProvider.notifier).logout();
+            },
           ),
         ],
       ),

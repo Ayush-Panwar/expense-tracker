@@ -29,7 +29,14 @@ class ExpenseRepositoryImpl implements ExpenseRepository {
   Future<List<ExpenseEntity>> getRemoteExpensesPaginated(int page, int limit) async {
     final result = await remoteDatasource.getExpenses(page: page, limit: limit);
     final expenses = result['expenses'] as List<dynamic>;
-    return expenses.map((json) => ExpenseModel.fromJson(json)).toList();
+    final models = expenses.map((json) => ExpenseModel.fromJson(json)).toList();
+
+    // cache to local DB for offline access
+    for (final model in models) {
+      await localDatasource.upsertExpense(model);
+    }
+
+    return models;
   }
 
   @override
@@ -160,6 +167,15 @@ class ExpenseRepositoryImpl implements ExpenseRepository {
       bool hadChanges = false;
       bool hasMore = true;
       String? cursor = await localDatasource.getLastSyncedAt();
+
+      // no cursor = first time. don't pull everything.
+      // pages will be fetched on scroll from server.
+      // only delta sync once we have a cursor.
+      if (cursor == null) {
+        // set cursor to now so next sync starts from here
+        await localDatasource.setLastSyncedAt(DateTime.now().toIso8601String());
+        return false;
+      }
 
       while (hasMore) {
         final result = await remoteDatasource.getChangesSince(cursor);

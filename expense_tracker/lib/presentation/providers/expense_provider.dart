@@ -76,6 +76,8 @@ class ExpenseNotifier extends Notifier<ExpenseState> {
   bool _isLoadingMore = false;
   int _filterVersion = 0;
   int _loadedCount = 0;
+  int _currentPage = 1;
+  bool _serverHasMore = true; // tracks if server has more pages
 
   static const _pageSize = 20;
 
@@ -99,31 +101,28 @@ class ExpenseNotifier extends Notifier<ExpenseState> {
     state = state.copyWith(isLoading: true);
 
     try {
-      // try local DB first
       final localCount = await _getExpenses.count();
 
       if (localCount > 0) {
-        // have cached data — show immediately
         final expenses = await _getExpenses(limit: _pageSize, offset: 0);
         _loadedCount = expenses.length;
+        _serverHasMore = expenses.length >= _pageSize;
         state = state.copyWith(
           expenses: expenses,
           isLoading: false,
-          hasMore: expenses.length >= _pageSize,
+          hasMore: _serverHasMore,
         );
       } else {
-        // empty local DB (first login or cleared)
-        // fetch page 1 directly from server for instant display
         try {
           final serverPage = await _getExpenses.fromServer(page: 1, limit: _pageSize);
           _loadedCount = serverPage.length;
+          _serverHasMore = serverPage.length >= _pageSize;
           state = state.copyWith(
             expenses: serverPage,
             isLoading: false,
-            hasMore: serverPage.length >= _pageSize,
+            hasMore: _serverHasMore,
           );
         } catch (_) {
-          // offline + empty DB — show empty state
           state = state.copyWith(isLoading: false, expenses: const []);
         }
       }
@@ -136,36 +135,55 @@ class ExpenseNotifier extends Notifier<ExpenseState> {
 
   Future<void> _reloadFromDB() async {
     final count = _loadedCount > 0 ? _loadedCount : _pageSize;
-    // fetch one extra to detect if more exist (same trick as server's 501)
-    final fetchCount = count + 1;
     try {
-      final fetched = await _getExpenses(limit: fetchCount, offset: 0);
-      final hasMore = fetched.length > count;
-      // only keep `count` items in state, not the extra
-      final expenses = hasMore ? fetched.sublist(0, count) : fetched;
+      final expenses = await _getExpenses(limit: count, offset: 0);
       _loadedCount = expenses.length;
 
       if (!_listsEqual(expenses, state.expenses)) {
-        state = state.copyWith(expenses: expenses, hasMore: hasMore);
+        // preserve _serverHasMore — don't recalculate from local DB
+        state = state.copyWith(expenses: expenses, hasMore: _serverHasMore);
       }
     } catch (_) {}
   }
 
   Future<void> loadMore() async {
-    if (_isLoadingMore || !state.hasMore || state.hasActiveFilter) {
-      return;
-    }
+    if (_isLoadingMore || !state.hasMore || state.hasActiveFilter) return;
     _isLoadingMore = true;
+    _currentPage++;
 
     state = state.copyWith(isLoadingMore: true);
     try {
-      final nextPage = await _getExpenses(limit: _pageSize, offset: _loadedCount);
-      _loadedCount += nextPage.length;
-      state = state.copyWith(
-        expenses: [...state.expenses, ...nextPage],
-        isLoadingMore: false,
-        hasMore: nextPage.length >= _pageSize,
-      );
+      // try local DB first (already cached pages)
+      final localPage = await _getExpenses(limit: _pageSize, offset: _loadedCount);
+
+      if (localPage.isNotEmpty) {
+        _loadedCount += localPage.length;
+        _serverHasMore = localPage.length >= _pageSize;
+        state = state.copyWith(
+          expenses: [...state.expenses, ...localPage],
+          isLoadingMore: false,
+          hasMore: _serverHasMore,
+        );
+      } else {
+        // no cached data — fetch from server and cache
+        try {
+          final serverPage = await _getExpenses.fromServer(
+            page: _currentPage,
+            limit: _pageSize,
+          );
+          _loadedCount += serverPage.length;
+          _serverHasMore = serverPage.length >= _pageSize;
+          state = state.copyWith(
+            expenses: [...state.expenses, ...serverPage],
+            isLoadingMore: false,
+            hasMore: _serverHasMore,
+          );
+        } catch (_) {
+          // offline — no more pages available
+          _serverHasMore = false;
+          state = state.copyWith(isLoadingMore: false, hasMore: false);
+        }
+      }
     } catch (_) {
       state = state.copyWith(isLoadingMore: false);
     } finally {
@@ -235,9 +253,21 @@ class ExpenseNotifier extends Notifier<ExpenseState> {
     }
   }
 
+  void reset() {
+    _loadedCount = 0;
+    _currentPage = 1;
+    _serverHasMore = true;
+    _isSyncing = false;
+    _isLoadingMore = false;
+    _filterVersion = 0;
+    state = const ExpenseState();
+  }
+
   void clearFilters() {
     _filterVersion++;
     _loadedCount = 0;
+    _currentPage = 1;
+    _serverHasMore = true;
     _reloadFirstPage(clearFilter: true);
   }
 
